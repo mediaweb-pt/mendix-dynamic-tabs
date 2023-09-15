@@ -1,0 +1,190 @@
+.dynamic-tabs.mx-tabcontainer{
+    --tabs-color: #6c717e;
+    --tabs-border-color: #ced0d3;
+    
+    --tabs-bg-color: #fff;
+    --tabs-hover-bg-color: #dbdddf;
+    --tabs-active-bg-color: #264ae5;
+
+    --tabs-line-height:3px;
+    --tabs-gutter:8px;
+
+
+    .mx-tabcontainer-tabs {
+        border-color: var(--tabs-border-color);
+        display: flex;
+        margin-bottom: 16px;
+
+        > li {
+            float: none;
+            cursor: pointer;
+
+            &[disabled]{
+                cursor: not-allowed;;
+            }
+        }
+
+        & > li > a {
+            border-radius: 4px 4px 0 0;
+            color: var(--tabs-color);
+            margin-right: 0;
+            transition: all 0.2s ease-in-out;
+
+            &:hover,
+            &:focus {
+                background-color: var(--tabs-hover-bg-color);
+            }
+
+            
+        }
+
+        & > li.active > a,
+        & > li.active > a:hover,
+        & > li.active > a:focus {
+            background-color: var(--tabs-bg-color);
+            border: 1px solid var(--tabs-border-color);
+            border-bottom-color: #fff;
+            color: var(--tabs-color-active);
+        }
+    }
+
+    &.tab-pills{
+        & > .mx-tabcontainer-tabs {
+            border: 0;
+    
+            & > li {
+                margin-bottom: var(--tabs-gutter);
+            }
+    
+            & > li > a {
+                background-color: var(--tabs-bg-color);
+                border-radius: 4px;
+                color: var(--tabs-color);
+                margin-right: var(--tabs-gutter);
+    
+                &:hover,
+                &:focus {
+                    background-color: var(--tabs-hover-bg-color);
+                }
+            }
+    
+            & > li.active > a,
+            & > li.active > a:hover,
+            & > li.active > a:focus {
+                background-color: var(--tabs-active-bg-color);
+                border-color: var(--tabs-active-bg-color);
+                color: #ffffff;
+            }
+        }
+
+        &.tab-right > .mx-tabcontainer-tabs > li > a{
+            margin-left: var(--tabs-gutter);
+            margin-right: unset;
+        }
+    }
+
+    &.tab-lined{
+        & > .mx-tabcontainer-tabs {
+            border-width: 1px;
+    
+            li {
+                margin-right: var(calc(--tabs-gutter *2));
+
+                & > a {
+                    border: 0;
+                    border-bottom: var(--tabs-line-height) solid transparent;
+                    border-radius: 0;
+                    color: var(--tabs-color);
+                    padding: 16px 0 (16px - var(--tabs-line-height)) 0; // border is 3px
+    
+                    &:hover,
+                    &:focus {
+                        background: transparent;
+                        border: 0;
+                        border-color: transparent;
+                        color: var(--tabs-color);
+                    }
+                }
+    
+                &.active > a,
+                &.active > a:hover,
+                &.active > a:focus {
+                    background-color: transparent;
+                    border: 0;
+                    border-bottom: var(--tabs-line-height) solid var(--tabs-active-bg-color);
+                    color: var(--tabs-active-bg-color);
+                }
+            }
+        }
+
+        &.tab-right > .mx-tabcontainer-tabs li{
+            margin-left: var(calc(--tabs-gutter *2));
+            margin-right: unset;
+        }
+    }
+    
+
+    &.tab-bordered{
+        & > .mx-tabcontainer-tabs {
+            margin: 0;
+        }
+    
+        & > .mx-tabcontainer-content {
+            background-color: var(--tabs-bg-color);
+            border-color: var(--tabs-border-color);
+            border-style: solid;
+            border-width: 0 1px 1px 1px;
+            padding: var(--tabs-gutter);
+        }
+    }
+
+    &.tab-center,
+    &.tab-left,
+    &.tab-right{
+        & > .mx-tabcontainer-tabs {
+            align-items: center;
+            display: flex;
+            flex-flow: wrap;
+        }
+    }
+
+
+    &.tab-center{
+        & > .mx-tabcontainer-tabs {
+            justify-content: center;
+        }
+    }
+
+    &.tab-left{
+        & > .mx-tabcontainer-tabs {
+            justify-content: flex-start;
+        }
+    }
+
+    &.tab-right{
+        & > .mx-tabcontainer-tabs {
+            justify-content: flex-end;
+        }
+    }
+
+    &.tab-justified{
+        & > .mx-tabcontainer-tabs {
+            border-bottom: 0;
+            width: 100%;
+    
+            & > li {
+                flex: 1;
+                float: none;
+                margin: 0;
+                @media (max-width: 767px) {
+                    display: block;
+                    width: 100%;
+                }
+    
+                & > a {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

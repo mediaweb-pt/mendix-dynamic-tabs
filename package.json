@@ -1,0 +1,52 @@
+{
+  "name": "dynamictabs",
+  "widgetName": "DynamicTabs",
+  "version": "0.0.1",
+  "description": "My widget description",
+  "copyright": "©Mendix Technology BV 2022. All rights reserved.",
+  "author": "Joao Pereira",
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "Apache-2.0",
+  "config": {
+    "projectPath": "./tests/testProject",
+    "mendixHost": "http://localhost:8080",
+    "developmentPort": 3000
+  },
+  "packagePath": "mediaweb",
+  "scripts": {
+    "start": "pluggable-widgets-tools start:server",
+    "dev": "pluggable-widgets-tools start:web",
+    "build": "pluggable-widgets-tools build:web",
+    "lint": "pluggable-widgets-tools lint",
+    "lint:fix": "pluggable-widgets-tools lint:fix",
+    "prerelease": "npm run lint",
+    "release": "pluggable-widgets-tools release:web"
+  },
+  "devDependencies": {
+    "@mendix/pluggable-widgets-tools": "^10.0.0",
+    "@types/big.js": "^6.0.2",
+    "mendix-client": "^7.15.8",
+    "react-hot-loader": "^4.13.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "resolutions": {
+    "@types/react": "18.0.0",
+    "@types/react-dom": "18.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.70.7",
+    "@types/react-native": "0.70.0"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-native": "0.70.7",
+    "react-dom": "18.2.0",
+    "@types/react": "18.0.0",
+    "@types/react-dom": "18.0.0",
+    "@types/react-native": "0.70.0"
+  }
+}

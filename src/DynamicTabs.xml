@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="mediaweb.dynamictabs.DynamicTabs" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Dynamic Tabs</name>
+    <description>This widgets allow you to generate tabs and is content with a Datasource.</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="Tab">
+            <!-- Genaral -->
+            <propertyGroup caption="General">
+                <property key="activeTab" type="expression" required="false">
+                    <caption>Start open on tab</caption>
+                    <description>Set the index of the open tab on first render, by default is 0.</description>
+                    <returnType type="Integer" />
+                </property>
+            </propertyGroup>
+            <!-- Tab Header -->
+            <propertyGroup caption="Tab Headers">
+                <property key="tabList" type="datasource" isList="true" required="false">
+                    <caption>List of Tabs</caption>
+                    <description>Datasource that will generate all Tabs Header</description>
+                </property>
+                <property key="tabId" type="attribute" dataSource="tabList">
+                    <caption>Id</caption>
+                    <description>Tab Header Id</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                        <attributeType name="Integer"/>
+                        <attributeType name="Long" />
+                        <attributeType name="AutoNumber" />
+                    </attributeTypes>
+                </property>
+                <property key="tabName" type="attribute" dataSource="tabList">
+                    <caption>Caption</caption>
+                    <description>Tab Header Caption, that will display</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="tabDisabled" type="attribute" dataSource="tabList" required="false">
+                    <caption>IsDisable</caption>
+                    <description>Set the tab disabled</description>
+                    <attributeTypes>
+                         <attributeType name="Boolean" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+            <!-- Tab Content -->
+            <propertyGroup caption="Tab Content">
+                <property key="tabsDataSource" type="datasource" isList="true" required="false">
+                    <caption>Tabs Content Data Source</caption>
+                    <description>Datasource that will generate all Tabs Contents</description>
+                </property>
+
+                <property key="contentTabId" type="attribute" dataSource="tabsDataSource">
+                    <caption>Tab Id</caption>
+                    <description>Id attribute that will connect the Tab Header to is content.</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                        <attributeType name="Integer"/>
+                        <attributeType name="Long" />
+                        <attributeType name="AutoNumber" />
+                    </attributeTypes>
+                </property>
+
+                <property key="content" type="widgets" required="false" dataSource="tabsDataSource">
+                    <caption>Content</caption>
+                    <description>Tab content</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="returnActiveTab" type="attribute" required="false" onChange="onChangeAction" >
+                <caption>Current Active tab</caption>
+                <description>Index of the current open tab</description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="returnActiveTabId" type="attribute" required="false" onChange="onChangeAction" >
+                <caption>Current Active tab Id</caption>
+                <description>Id of the current open tab</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                    <attributeType name="Integer"/>
+                    <attributeType name="Long" />
+                    <attributeType name="AutoNumber" />
+                </attributeTypes>
+            </property>
+            <property key="onChangeAction" type="action">
+                <caption>On tab change</caption>
+                <description>Will execute when the open tab change.</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Visibility">
+            <systemProperty key="Visibility"/>
+        </propertyGroup>
+        <propertyGroup caption="Style Customization">
+            <property key="tabsStyle" type="enumeration" defaultValue="bordered">
+                <caption>Tab Style</caption>
+                <description></description>
+                <enumerationValues>
+                    <enumerationValue key="default">Default</enumerationValue>
+                    <enumerationValue key="bordered">Bordered</enumerationValue>
+                    <enumerationValue key="lined">Lined</enumerationValue>
+                    <enumerationValue key="pills">Pills</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="tabsPosition" type="enumeration" defaultValue="default">
+                <caption>Tab Position</caption>
+                <description></description>
+                <enumerationValues>
+                    <enumerationValue key="default">Default</enumerationValue>
+                    <enumerationValue key="center">Center</enumerationValue>
+                    <enumerationValue key="left">Left</enumerationValue>
+                    <enumerationValue key="right">Right</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="tabsJustify" type="boolean" defaultValue="false">
+                <caption>Justify</caption>
+                <description></description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
